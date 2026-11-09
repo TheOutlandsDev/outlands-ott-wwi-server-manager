@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+state/
+private/
+Logs/
+campaign-backups/
+update-backups/
+*.tar.gz
+*.acf
+*.ini
+*.json
+*.log
