@@ -10,6 +10,7 @@ This repository contains no game server binary, Steam content, live configuratio
 - `start-over-the-top-pve.sh`: Proton and Xvfb launcher invoked by the controller.
 - `run-over-the-top-pve-detached.sh`, `stop-over-the-top-pve.sh`: simple operator wrappers.
 - `test_ott_server_manager.py`: offline tests using temporary fictional data.
+- `synthetic_restore_drill.py`: disposable campaign, configuration, binary, and recovery-copy drill using fictional archives.
 
 ## Configure before use
 
@@ -32,7 +33,10 @@ Run only the offline tests until you have reviewed the paths and server state:
 
 ```sh
 python3 -B -m unittest -q test_ott_server_manager.py
+python3 -I -B synthetic_restore_drill.py
 ```
+
+The synthetic drill exercises the manager's archive extraction and hash checks. It simulates an available external recovery device; it does not validate a real separate disk, installed game, or native campaign continuity.
 
 Then inspect `python3 ott-server-manager.py --help`. Commands such as `update`, `start`, `restore-drill`, and password rotation change local state and need a fresh host-specific review. Backups prove only what the manager captured; game process or port health does not prove exact native campaign continuity. Confirm a completed battle/map transition and a fresh complete archive before relying on persistence.
 
